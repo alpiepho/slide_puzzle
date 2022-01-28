@@ -1,3 +1,33 @@
+# Fork Notes
+
+This is a fork of the Slide Puzzle.  Look for big logo below for original README.md.
+
+## Ideas
+
+- convert to PWA
+- settings to change from 4x4 to other
+- add move recorder and playback
+- overlay numbers on image
+- add auto solver and playback
+- new theme using given picture
+- control shuffle?
+- move annimations
+- add commentary to playback ("Rocket League" mode)
+
+
+
+
+## TODO
+
+- Add ideas
+- Sort ideas
+
+<br>
+<br>
+<br>
+
+---
+
 # Slide Puzzle
 
 ![Photo Booth Header][logo]

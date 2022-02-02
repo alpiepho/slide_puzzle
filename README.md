@@ -9,9 +9,9 @@ This is a fork of the Slide Puzzle.  Look for big logo below for original README
 - [ ] port peanut script from scoreboard_tn, https://github.com/alpiepho/scoreboard_tn
 
 ### User settable size
-- currently a 4x4 puzzle
-- duplicate "new puzzle" and "new 3x3", "new 4x4", "new 5x5"
-- try to keep same board size
+- [ ] currently a 4x4 puzzle
+- [ ] duplicate "new puzzle" and "new 3x3", "new 4x4", "new 5x5"
+- [ ] try to keep same board size
 
 ### User help features
 - [ ] checkbox to overlay numbers on tiles

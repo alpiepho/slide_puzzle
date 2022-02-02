@@ -2,11 +2,12 @@
 
 This is a fork of the Slide Puzzle.  Look for big logo below for original README.md.
 
+Run it here: [https://alpiepho.github.io/slide_puzzle/](https://alpiepho.github.io/slide_puzzle/)
 ## Ideas
 
 ### Serve as PWA (Progressive Web Applicaiton)
 - [ ] for mobile, force portrait
-- [ ] port peanut script from scoreboard_tn, https://github.com/alpiepho/scoreboard_tn
+- [x] port peanut script from scoreboard_tn, https://github.com/alpiepho/scoreboard_tn
 
 ### User settable size
 - [ ] currently a 4x4 puzzle

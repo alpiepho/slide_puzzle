@@ -4,23 +4,36 @@ This is a fork of the Slide Puzzle.  Look for big logo below for original README
 
 ## Ideas
 
-- convert to PWA
-- settings to change from 4x4 to other
-- add move recorder and playback
-- overlay numbers on image
-- add auto solver and playback
-- new theme using given picture
-- control shuffle?
+### Serve as PWA (Progressive Web Applicaiton)
+- for mobile, force portrait
+- port peanut script from scoreboard_tn, https://github.com/alpiepho/scoreboard_tn
+
+### User settable size
+- currently a 4x4 puzzle
+- duplicate "new puzzle" and "new 3x3", "new 4x4", "new 5x5"
+- try to keep same board size
+
+### User help features
+- [ ] checkbox to overlay numbers on tiles
+- [ ] checkbox for same shuffle
+- [ ] save last shuffle?
+- [ ] record moves button (record/stop)
+- [ ] record moves (echo to output)
+- [ ] playback button
+- implment solver and playback?
+
+### User pictures
+- input link to image
+- process image as tiles
+- test with hard coded image
+
+
+### Other Ideas
 - move annimations
 - add commentary to playback ("Rocket League" mode)
 
 
 
-
-## TODO
-
-- Add ideas
-- Sort ideas
 
 <br>
 <br>
@@ -30,7 +43,8 @@ This is a fork of the Slide Puzzle.  Look for big logo below for original README
 
 # Slide Puzzle
 
-![Photo Booth Header][logo]
+<!-- ![Photo Booth Header][logo] -->
+<img src="art/header.png" alt="Photo Booth Header" width="400"/>
 
 ![coverage][coverage_badge]
 [![style: very good analysis][very_good_analysis_badge]][very_good_analysis_link]

@@ -59974,7 +59974,7 @@ A.cT(b,B.X,t.J).toString
 s=$.ajC()
 r=this.c
 q=o===B.bJ?r.gHP():r.a.a.length-1
-return A.eI(A.a([B.Ap,new A.vX(n),B.Am,new A.vY("Puzzle Challenge",m),B.Ao,new A.vw(r.f,q,s),B.Vo,new A.bm(new A.Uo(),new A.Up(),new A.Uq(),p,p),new A.bm(new A.Ur(),new A.Us(),new A.Ut(),p,p),B.Vf],t.p),B.bo,p,B.a_,B.L)}}
+return A.eI(A.a([B.Ap,new A.vX(n),B.Am,new A.vY("Puzzle Challenge - alpiepho fork",m),B.Ao,new A.vw(r.f,q,s),B.Vo,new A.bm(new A.Uo(),new A.Up(),new A.Uq(),p,p),new A.bm(new A.Ur(),new A.Us(),new A.Ut(),p,p),B.Vf],t.p),B.bo,p,B.a_,B.L)}}
 A.Un.prototype={
 $1(a){return J.QO(a.c)},
 $S:75}
@@ -60617,7 +60617,7 @@ A.Ia.prototype={
 D(a,b){var s=$.ajF(),r=t.J
 if(this.c===B.fp){A.cT(b,B.X,r).toString
 r="Well done. Congrats!"}else{A.cT(b,B.X,r).toString
-r="Puzzle Challenge"}return new A.vY(r,s)}}
+r="Puzzle Challenge - alpiepho fork"}return new A.vY(r,s)}}
 A.qd.prototype={
 D(a,b){var s=null,r=this.e,q=this.d,p=A.aE([null,0],t.LO,t.S),o=q.length
 return new A.CZ(new A.a5E(this.c,r,r,1),new A.a5A(!0,!0,!0,q,p),B.ad,B.c1,!1,s,!0,B.UB,!0,s,o,B.aR,B.VG,s,B.aP,s)}}

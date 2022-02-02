@@ -5,8 +5,8 @@ This is a fork of the Slide Puzzle.  Look for big logo below for original README
 ## Ideas
 
 ### Serve as PWA (Progressive Web Applicaiton)
-- for mobile, force portrait
-- port peanut script from scoreboard_tn, https://github.com/alpiepho/scoreboard_tn
+- [ ] for mobile, force portrait
+- [ ] port peanut script from scoreboard_tn, https://github.com/alpiepho/scoreboard_tn
 
 ### User settable size
 - currently a 4x4 puzzle
@@ -20,17 +20,17 @@ This is a fork of the Slide Puzzle.  Look for big logo below for original README
 - [ ] record moves button (record/stop)
 - [ ] record moves (echo to output)
 - [ ] playback button
-- implment solver and playback?
+- [ ] implment solver and playback?
 
 ### User pictures
-- input link to image
-- process image as tiles
-- test with hard coded image
+- [ ] input link to image
+- [ ] process image as tiles
+- [ ] test with hard coded image
 
 
 ### Other Ideas
-- move annimations
-- add commentary to playback ("Rocket League" mode)
+- [ ] move annimations
+- [ ] add commentary to playback ("Rocket League" mode)
 
 
 

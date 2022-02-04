@@ -6,9 +6,8 @@ Run it here: [https://alpiepho.github.io/slide_puzzle/](https://alpiepho.github.
 ## Ideas
 
 ### Serve as PWA (Progressive Web Applicaiton)
-- [ ] for mobile, force portrait
 - [x] port peanut script from scoreboard_tn, https://github.com/alpiepho/scoreboard_tn
-
+- [x] for mobile, ~~force portrait~~ given use of Responsive* chose to simplify by only changing board size and allow scroll in landscape on mobile
 ### User settable size
 - [ ] currently a 4x4 puzzle
 - [ ] duplicate "new puzzle" and "new 3x3", "new 4x4", "new 5x5"

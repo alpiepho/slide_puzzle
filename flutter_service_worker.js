@@ -4,9 +4,9 @@ const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
   "version.json": "edac6610d63f93aebfb1c09a76230248",
-"index.html": "e738c4cf07d516adc867b9e5c07823a0",
-"/": "e738c4cf07d516adc867b9e5c07823a0",
-"main.dart.js": "5673e8606a6fd86104507e79b8ac8aa4",
+"index.html": "0af43e2a0c209521f810a610b9e8c319",
+"/": "0af43e2a0c209521f810a610b9e8c319",
+"main.dart.js": "50db0cff5e860a63f651af0b433375f2",
 "favicon.png": "7a26ea9d4e61122fc023b84e5acdb148",
 "icons/Icon-192.png": "12d05db1c0b26d429b54e3f8c946a496",
 "icons/favicon.png": "7a26ea9d4e61122fc023b84e5acdb148",
@@ -92,18 +92,22 @@ const RESOURCES = {
 "assets/assets/fonts/GoogleSans-Italic.ttf": "b08c7421b2d5350ea3003c8f38932601",
 "assets/assets/fonts/GoogleSans-Bold.ttf": "c0370e8a74992bab73461f8348e3b369",
 "assets/assets/fonts/GoogleSans-BoldItalic.ttf": "aebc8fe5e393970fa3d468524e64b670",
-"assets/assets/fonts/GoogleSans-Regular.ttf": "51134713ade7b1f137e06ce395d39d40"
+"assets/assets/fonts/GoogleSans-Regular.ttf": "51134713ade7b1f137e06ce395d39d40",
+"canvaskit/canvaskit.js": "43fa9e17039a625450b6aba93baf521e",
+"canvaskit/profiling/canvaskit.js": "f3bfccc993a1e0bfdd3440af60d99df4",
+"canvaskit/profiling/canvaskit.wasm": "a9610cf39260f60fbe7524a785c66101",
+"canvaskit/canvaskit.wasm": "04ed3c745ff1dee16504be01f9623498"
 };
 
 // The application shell files that are downloaded before a service worker can
 // start.
 const CORE = [
-  "https://alpiepho.github.io/slide_puzzle/",
-"https://alpiepho.github.io/slide_puzzle/main.dart.js",
-"https://alpiepho.github.io/slide_puzzle/index.html",
-"https://alpiepho.github.io/slide_puzzle/assets/NOTICES",
-"https://alpiepho.github.io/slide_puzzle/assets/AssetManifest.json",
-"https://alpiepho.github.io/slide_puzzle/assets/FontManifest.json"];
+  "/",
+"main.dart.js",
+"index.html",
+"assets/NOTICES",
+"assets/AssetManifest.json",
+"assets/FontManifest.json"];
 // During install, the TEMP cache is populated with the application shell files.
 self.addEventListener("install", (event) => {
   self.skipWaiting();

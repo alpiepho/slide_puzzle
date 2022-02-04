@@ -30,6 +30,7 @@ Run it here: [https://alpiepho.github.io/slide_puzzle/](https://alpiepho.github.
 
 
 ### Other Ideas
+- [ ] clearn up "problems"
 - [ ] move annimations
 - [ ] add commentary to playback ("Rocket League" mode)
 

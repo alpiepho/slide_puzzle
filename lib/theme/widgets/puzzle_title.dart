@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:very_good_slide_puzzle/layout/layout.dart';
 import 'package:very_good_slide_puzzle/theme/theme.dart';
 import 'package:very_good_slide_puzzle/typography/typography.dart';
@@ -52,13 +53,30 @@ class PuzzleTitle extends StatelessWidget {
             ? TextAlign.center
             : TextAlign.left;
 
-        return AnimatedDefaultTextStyle(
-          style: textStyle,
-          duration: PuzzleThemeAnimationDuration.textStyle,
-          child: Text(
-            title,
-            textAlign: textAlign,
-          ),
+        return Column(
+          children: [
+            AnimatedDefaultTextStyle(
+              style: textStyle,
+              duration: PuzzleThemeAnimationDuration.textStyle,
+              child: Text(
+                title,
+                textAlign: textAlign,
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                launch('https://github.com/alpiepho/slide_puzzle/blob/master/README.md');
+              },
+              child: const Text(
+                'alpiepho fork',
+                style: TextStyle(
+                color: Colors.red, 
+                decoration: TextDecoration.underline,
+                fontWeight: FontWeight.bold,
+              ),
+                      ),
+            ),
+          ],
         );
       },
     );

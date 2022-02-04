@@ -135,6 +135,7 @@ class _Puzzle extends StatelessWidget {
                   children: const [
                     PuzzleHeader(),
                     PuzzleSections(),
+                    SizedBox(height: 200,) // allows mobile landscape scroll
                   ],
                 ),
               ),

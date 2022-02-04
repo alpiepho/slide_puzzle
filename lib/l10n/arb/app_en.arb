@@ -8,7 +8,7 @@
     "@puzzleRestartTooltip": {
         "description": "Shown as a tooltip for the puzzle restart button"
     },
-    "puzzleChallengeTitle": "Puzzle Challenge - alpiepho fork",
+    "puzzleChallengeTitle": "Puzzle Challenge",
     "@puzzleChallengeTitle": {
         "description": "Shown as the title of the puzzle"
     },

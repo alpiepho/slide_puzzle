@@ -11,7 +11,8 @@ import 'package:very_good_slide_puzzle/timer/timer.dart';
 
 abstract class _BoardSize {
   static double small = 312;
-  static double medium = 424;
+  //static double medium = 424;
+  static double medium = 312; // TODO(alpiepho): can we detect mobile landscape?, https://no-issue.
   static double large = 472;
 }
 

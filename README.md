@@ -20,7 +20,7 @@ Run it here: [https://alpiepho.github.io/slide_puzzle/](https://alpiepho.github.
 - [ ] record moves button (record/stop)
 - [ ] record moves (echo to output)
 - [ ] playback button
-- [ ] implment solver and playback?
+- [ ] implement solver and playback?
 
 ### User pictures
 - [ ] input link to image
@@ -29,7 +29,7 @@ Run it here: [https://alpiepho.github.io/slide_puzzle/](https://alpiepho.github.
 
 
 ### Other Ideas
-- [ ] clearn up "problems"
+- [ ] clean up "problems"
 - [ ] move annimations
 - [ ] add commentary to playback ("Rocket League" mode)
 

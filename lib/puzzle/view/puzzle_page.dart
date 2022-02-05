@@ -163,7 +163,8 @@ class PuzzleHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = context.select((ThemeBloc bloc) => bloc.state.theme);
     final nameColor = theme.nameColor;
-    final backgroundColor = theme.backgroundColor;
+    final backgroundColor = 
+      theme.name == 'Simple' ? Colors.white : theme.buttonColor;
     return SizedBox(
       height: 96,
       child: ResponsiveLayoutBuilder(
@@ -183,28 +184,69 @@ class PuzzleHeader extends StatelessWidget {
                       builder: (BuildContext context) {
                         return AlertDialog(
                           backgroundColor: backgroundColor,
-                          title: const Text(
-                            'Additional Settings',
+                          title: Text(
+                            'Settings',
+                            style: TextStyle(color: nameColor),
                             ),
                           content: SingleChildScrollView(
                             child: ListBody(
-                              children: const <Widget>[
+                              children: <Widget>[
                                 CheckboxListTile(
-                                  title: Text('3 x 3'), 
+                                  title: Text(
+                                    '3 x 3',
+                                    style: TextStyle(color: nameColor),
+                                  ), 
+                                  value: false, 
+                                  onChanged: null,
+                                ),
+                                CheckboxListTile(
+                                  title: Text(
+                                    '4 x 4',
+                                    style: TextStyle(color: nameColor),
+                                  ), 
                                   value: true, 
                                   onChanged: null,
                                 ),
-                                Text(
-                                  'Would you clear scores?',
-                                  //style: kSettingsTextEditStyle,
+                                CheckboxListTile(
+                                  title: Text(
+                                    '5 x 5',
+                                    style: TextStyle(color: nameColor),
+                                  ), 
+                                  value: false, 
+                                  onChanged: null,
+                                ),
+                                CheckboxListTile(
+                                  title: Text(
+                                    'Same shuffle',
+                                    style: TextStyle(color: nameColor),
+                                  ), 
+                                  value: false, 
+                                  onChanged: null,
+                                ),
+                                CheckboxListTile(
+                                  title: Text(
+                                    'Overlay numbers',
+                                    style: TextStyle(color: nameColor),
+                                  ), 
+                                  value: false, 
+                                  onChanged: null,
+                                ),
+                                CheckboxListTile(
+                                  title: Text(
+                                    'Record moves',
+                                    style: TextStyle(color: nameColor),
+                                  ), 
+                                  value: false, 
+                                  onChanged: null,
                                 ),
                               ],
                             ),
                           ),
                           actions: <Widget>[
                             TextButton(
-                              child: const Text(
+                              child: Text(
                                 'Done',
+                                style: TextStyle(color: nameColor),
                               ),
                               onPressed: () {
                                 Navigator.of(context).pop();
@@ -427,7 +469,7 @@ class PuzzleMenu extends StatelessWidget {
                 ),
 
 
-                
+
                 const Gap(20),
                 AudioControl(
                   key: audioControlKey,

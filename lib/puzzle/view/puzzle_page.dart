@@ -161,16 +161,67 @@ class PuzzleHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.select((ThemeBloc bloc) => bloc.state.theme);
+    final nameColor = theme.nameColor;
+    final backgroundColor = theme.backgroundColor;
     return SizedBox(
       height: 96,
       child: ResponsiveLayoutBuilder(
         small: (context, child) => Stack(
           children: [
-            const Align(
+            Align(
               alignment: Alignment.centerLeft,
               child: Padding(
-                padding: EdgeInsets.only(left: 34),
-                child: Text('SettingsControl'),
+                padding: const EdgeInsets.only(left: 34),
+  
+  
+                // TODO(alpiepho): finish dialog, https://no-issue.
+                child: GestureDetector(
+                  onTap: () {
+                    showDialog<void>(
+                      context: context, 
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          backgroundColor: backgroundColor,
+                          title: const Text(
+                            'Additional Settings',
+                            ),
+                          content: SingleChildScrollView(
+                            child: ListBody(
+                              children: const <Widget>[
+                                CheckboxListTile(
+                                  title: Text('3 x 3'), 
+                                  value: true, 
+                                  onChanged: null,
+                                ),
+                                Text(
+                                  'Would you clear scores?',
+                                  //style: kSettingsTextEditStyle,
+                                ),
+                              ],
+                            ),
+                          ),
+                          actions: <Widget>[
+                            TextButton(
+                              child: const Text(
+                                'Done',
+                              ),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
+                  child: Icon(
+                    Icons.settings,
+                    color: nameColor,
+                  ),
+                ),
+
+
               ),
             ),
             const Align(
@@ -347,6 +398,8 @@ class PuzzleMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themes = context.select((ThemeBloc bloc) => bloc.state.themes);
+    final theme = context.select((ThemeBloc bloc) => bloc.state.theme);
+    final nameColor = theme.nameColor;
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -366,7 +419,15 @@ class PuzzleMenu extends StatelessWidget {
             return Row(
               children: [
                 const Gap(44),
-                const Text('SettingsControl'),
+
+                // TODO(alpiepho): finish dialog, https://no-issue.
+                Icon(
+                  Icons.settings,
+                  color: nameColor,
+                ),
+
+
+                
                 const Gap(20),
                 AudioControl(
                   key: audioControlKey,

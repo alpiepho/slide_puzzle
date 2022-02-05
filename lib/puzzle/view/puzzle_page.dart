@@ -135,7 +135,9 @@ class _Puzzle extends StatelessWidget {
                   children: const [
                     PuzzleHeader(),
                     PuzzleSections(),
-                    SizedBox(height: 200,) // allows mobile landscape scroll
+                    SizedBox(
+                      height: 200,
+                    ) // allows mobile landscape scroll
                   ],
                 ),
               ),
@@ -164,6 +166,13 @@ class PuzzleHeader extends StatelessWidget {
       child: ResponsiveLayoutBuilder(
         small: (context, child) => Stack(
           children: [
+            const Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding: EdgeInsets.only(left: 34),
+                child: Text('SettingsControl'),
+              ),
+            ),
             const Align(
               child: PuzzleLogo(),
             ),
@@ -357,6 +366,8 @@ class PuzzleMenu extends StatelessWidget {
             return Row(
               children: [
                 const Gap(44),
+                const Text('SettingsControl'),
+                const Gap(20),
                 AudioControl(
                   key: audioControlKey,
                 )

@@ -7,6 +7,7 @@ import 'package:very_good_slide_puzzle/l10n/l10n.dart';
 import 'package:very_good_slide_puzzle/layout/layout.dart';
 import 'package:very_good_slide_puzzle/models/models.dart';
 import 'package:very_good_slide_puzzle/puzzle/puzzle.dart';
+import 'package:very_good_slide_puzzle/settings_control/settings_control.dart';
 import 'package:very_good_slide_puzzle/simple/simple.dart';
 import 'package:very_good_slide_puzzle/theme/theme.dart';
 import 'package:very_good_slide_puzzle/timer/timer.dart';
@@ -161,109 +162,16 @@ class PuzzleHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.select((ThemeBloc bloc) => bloc.state.theme);
-    final nameColor = theme.nameColor;
-    final backgroundColor = 
-      theme.name == 'Simple' ? Colors.white : theme.buttonColor;
     return SizedBox(
       height: 96,
       child: ResponsiveLayoutBuilder(
         small: (context, child) => Stack(
           children: [
-            Align(
+            const Align(
               alignment: Alignment.centerLeft,
               child: Padding(
-                padding: const EdgeInsets.only(left: 34),
-  
-  
-                // TODO(alpiepho): finish dialog, https://no-issue.
-                child: GestureDetector(
-                  onTap: () {
-                    showDialog<void>(
-                      context: context, 
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          backgroundColor: backgroundColor,
-                          title: Text(
-                            'Settings',
-                            style: TextStyle(color: nameColor),
-                            ),
-                          content: SingleChildScrollView(
-                            child: ListBody(
-                              children: <Widget>[
-                                CheckboxListTile(
-                                  title: Text(
-                                    '3 x 3',
-                                    style: TextStyle(color: nameColor),
-                                  ), 
-                                  value: false, 
-                                  onChanged: null,
-                                ),
-                                CheckboxListTile(
-                                  title: Text(
-                                    '4 x 4',
-                                    style: TextStyle(color: nameColor),
-                                  ), 
-                                  value: true, 
-                                  onChanged: null,
-                                ),
-                                CheckboxListTile(
-                                  title: Text(
-                                    '5 x 5',
-                                    style: TextStyle(color: nameColor),
-                                  ), 
-                                  value: false, 
-                                  onChanged: null,
-                                ),
-                                CheckboxListTile(
-                                  title: Text(
-                                    'Same shuffle',
-                                    style: TextStyle(color: nameColor),
-                                  ), 
-                                  value: false, 
-                                  onChanged: null,
-                                ),
-                                CheckboxListTile(
-                                  title: Text(
-                                    'Overlay numbers',
-                                    style: TextStyle(color: nameColor),
-                                  ), 
-                                  value: false, 
-                                  onChanged: null,
-                                ),
-                                CheckboxListTile(
-                                  title: Text(
-                                    'Record moves',
-                                    style: TextStyle(color: nameColor),
-                                  ), 
-                                  value: false, 
-                                  onChanged: null,
-                                ),
-                              ],
-                            ),
-                          ),
-                          actions: <Widget>[
-                            TextButton(
-                              child: Text(
-                                'Done',
-                                style: TextStyle(color: nameColor),
-                              ),
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                            ),
-                          ],
-                        );
-                      },
-                    );
-                  },
-                  child: Icon(
-                    Icons.settings,
-                    color: nameColor,
-                  ),
-                ),
-
-
+                padding: EdgeInsets.only(left: 34),
+                child: SettingsControl(),
               ),
             ),
             const Align(
@@ -440,8 +348,6 @@ class PuzzleMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themes = context.select((ThemeBloc bloc) => bloc.state.themes);
-    final theme = context.select((ThemeBloc bloc) => bloc.state.theme);
-    final nameColor = theme.nameColor;
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -461,15 +367,7 @@ class PuzzleMenu extends StatelessWidget {
             return Row(
               children: [
                 const Gap(44),
-
-                // TODO(alpiepho): finish dialog, https://no-issue.
-                Icon(
-                  Icons.settings,
-                  color: nameColor,
-                ),
-
-
-
+                const SettingsControl(),
                 const Gap(20),
                 AudioControl(
                   key: audioControlKey,

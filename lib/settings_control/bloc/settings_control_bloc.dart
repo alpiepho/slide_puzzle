@@ -6,16 +6,17 @@ import 'package:equatable/equatable.dart';
 part 'settings_control_event.dart';
 part 'settings_control_state.dart';
 
-class SettingsControlBloc 
+class SettingsControlBloc
     extends Bloc<SettingsControlEvent, SettingsControlState> {
   SettingsControlBloc() : super(const SettingsControlState()) {
-    on<SettingsToggled>(_onSettingsToggled);
+    on<SettingsSizeTapped>(_onSettingsSizeTapped);
   }
 
-  void _onSettingsToggled(
-    SettingsToggled event, 
+  void _onSettingsSizeTapped(
+    SettingsSizeTapped event,
     Emitter<SettingsControlState> emit,
-    ) {
-    emit(SettingsControlState(muted: !state.muted));
+  ) {
+    print('got ${event.size}\n');
+    emit(SettingsControlState(size: event.size));
   }
 }

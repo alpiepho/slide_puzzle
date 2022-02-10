@@ -9,4 +9,11 @@ abstract class SettingsControlEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class SettingsToggled extends SettingsControlEvent {}
+class SettingsSizeTapped extends SettingsControlEvent {
+  const SettingsSizeTapped({required this.size});
+
+  final int size;
+
+  @override
+  List<Object> get props => [size];
+}

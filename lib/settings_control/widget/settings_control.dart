@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-//import 'package:very_good_slide_puzzle/audio_control/audio_control.dart';
+import 'package:very_good_slide_puzzle/settings_control/settings_control.dart';
 //import 'package:very_good_slide_puzzle/layout/layout.dart';
 import 'package:very_good_slide_puzzle/theme/theme.dart';
 
@@ -15,20 +15,20 @@ class SettingsControl extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //final theme = context.select((ThemeBloc bloc) => bloc.state.theme);
-    // final audioMuted =
-    //     context.select((AudioControlBloc bloc) => bloc.state.muted);
-    // final audioAsset =
-    //     audioMuted ? theme.audioControlOffAsset : theme.audioControlOnAsset;
     final theme = context.select((ThemeBloc bloc) => bloc.state.theme);
     final nameColor = theme.nameColor;
     final backgroundColor =
         theme.name == 'Simple' ? Colors.white : theme.buttonColor;
+    final puzzleSize =
+        context.select((SettingsControlBloc bloc) => bloc.state.size);
+    final puzzleSize3x3 = puzzleSize == 3;
+    final puzzleSize4x4 = puzzleSize == 4;
+    final puzzleSize5x5 = puzzleSize == 5;
+    final parentContext = context;
 
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
-        //onTap: () => context.read<AudioControlBloc>().add(AudioToggled()),
         onTap: () {
           showDialog<void>(
             context: context,
@@ -50,24 +50,36 @@ class SettingsControl extends StatelessWidget {
                           '3 x 3',
                           style: TextStyle(color: nameColor),
                         ),
-                        value: false,
-                        onChanged: null,
+                        value: puzzleSize3x3,
+                        onChanged: (val) {
+                          parentContext
+                              .read<SettingsControlBloc>()
+                              .add(const SettingsSizeTapped(size: 3));
+                        },
                       ),
                       CheckboxListTile(
                         title: Text(
                           '4 x 4',
                           style: TextStyle(color: nameColor),
                         ),
-                        value: true,
-                        onChanged: null,
+                        value: puzzleSize4x4,
+                        onChanged: (val) {
+                          parentContext
+                              .read<SettingsControlBloc>()
+                              .add(const SettingsSizeTapped(size: 4));
+                        },
                       ),
                       CheckboxListTile(
                         title: Text(
                           '5 x 5',
                           style: TextStyle(color: nameColor),
                         ),
-                        value: false,
-                        onChanged: null,
+                        value: puzzleSize5x5,
+                        onChanged: (val) {
+                          parentContext
+                              .read<SettingsControlBloc>()
+                              .add(const SettingsSizeTapped(size: 5));
+                        },
                       ),
                       CheckboxListTile(
                         title: Text(
@@ -96,17 +108,17 @@ class SettingsControl extends StatelessWidget {
                     ],
                   ),
                 ),
-                actions: <Widget>[
-                  TextButton(
-                    child: Text(
-                      'Done',
-                      style: TextStyle(color: nameColor),
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                ],
+                // actions: <Widget>[
+                //   TextButton(
+                //     child: Text(
+                //       'Done',
+                //       style: TextStyle(color: nameColor),
+                //     ),
+                //     onPressed: () {
+                //       Navigator.of(context).pop();
+                //     },
+                //   ),
+                // ],
               );
             },
           );

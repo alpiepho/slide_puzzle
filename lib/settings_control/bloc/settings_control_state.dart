@@ -4,12 +4,12 @@ part of 'settings_control_bloc.dart';
 
 class SettingsControlState extends Equatable {
   const SettingsControlState({
-    this.muted = false,
+    this.size = 4,
   });
 
-  /// Whether the audio is muted.
-  final bool muted;
+  /// Size of puzzle
+  final int size;
 
   @override
-  List<Object> get props => [muted];
+  List<Object> get props => [size];
 }

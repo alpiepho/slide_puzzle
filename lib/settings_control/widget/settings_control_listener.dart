@@ -23,27 +23,28 @@ class SettingsControlListener extends StatefulWidget {
   final Widget child;
 
   @override
-  State<SettingsControlListener> createState() 
-    => _SettingsControlListenerState();
+  State<SettingsControlListener> createState() =>
+      _SettingsControlListenerState();
 }
 
 class _SettingsControlListenerState extends State<SettingsControlListener> {
   @override
   void didChangeDependencies() {
-    updateSettings(muted: context.read<SettingsControlBloc>().state.muted);
+    //updateSettings(muted: context.read<SettingsControlBloc>().state.muted);
     super.didChangeDependencies();
   }
 
   @override
   void didUpdateWidget(covariant SettingsControlListener oldWidget) {
     super.didUpdateWidget(oldWidget);
-    updateSettings(muted: context.read<SettingsControlBloc>().state.muted);
+    //updateSettings(muted: context.read<SettingsControlBloc>().state.muted);
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocListener<SettingsControlBloc, SettingsControlState>(
-      listener: (context, state) => updateSettings(muted: state.muted),
+      //listener: (context, state) => updateSettings(muted: state.muted),
+      listener: (context, state) => updateSettings(muted: false),
       child: widget.child,
     );
   }

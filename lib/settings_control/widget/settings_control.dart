@@ -21,10 +21,10 @@ class SettingsControl extends StatelessWidget {
         theme.name == 'Simple' ? Colors.white : theme.buttonColor;
     final puzzleSize =
         context.select((SettingsControlBloc bloc) => bloc.state.size);
-    final puzzleSize3x3 = puzzleSize == 3;
-    final puzzleSize4x4 = puzzleSize == 4;
-    final puzzleSize5x5 = puzzleSize == 5;
     final parentContext = context;
+    final sameShuffle = false;
+    final overlayNumbers = false;
+    final recordMoves = false;
 
     return MouseRegion(
       cursor: SystemMouseCursors.click,
@@ -36,10 +36,11 @@ class SettingsControl extends StatelessWidget {
               return SettingsDialog(
                 backgroundColor: backgroundColor,
                 nameColor: nameColor,
-                puzzleSize3x3: puzzleSize3x3,
                 parentContext: parentContext,
-                puzzleSize4x4: puzzleSize4x4,
-                puzzleSize5x5: puzzleSize5x5,
+                puzzleSize: puzzleSize,
+                sameShuffle: sameShuffle,
+                overlayNumbers: overlayNumbers,
+                recordMoves: recordMoves,
               );
             },
           );
@@ -54,16 +55,17 @@ class SettingsControl extends StatelessWidget {
 }
 
 /// dialog for settings
-class SettingsDialog extends StatelessWidget {
+class SettingsDialog extends StatefulWidget {
   /// constructor
   const SettingsDialog({
     Key? key,
     required this.backgroundColor,
     required this.nameColor,
-    required this.puzzleSize3x3,
-    required this.puzzleSize4x4,
-    required this.puzzleSize5x5,
     required this.parentContext,
+    required this.puzzleSize,
+    required this.sameShuffle,
+    required this.overlayNumbers,
+    required this.recordMoves,
   }) : super(key: key);
 
   /// theme background color
@@ -72,25 +74,56 @@ class SettingsDialog extends StatelessWidget {
   /// theme text color
   final Color nameColor;
 
-  /// initial value of checkbox
-  final bool puzzleSize3x3;
-
-  /// initial value of checkbox
-  final bool puzzleSize4x4;
-
-  /// initial value of checkbox
-  final bool puzzleSize5x5;
-
   /// parent context for reporting settings changes
   final BuildContext parentContext;
 
+  /// initial value for checkbox
+  final int puzzleSize;
+
+  /// initial value for checkbox
+  final bool sameShuffle;
+
+  /// initial value for checkbox
+  final bool overlayNumbers;
+
+  /// initial value for checkbox
+  final bool recordMoves;
+
+  @override
+  State<SettingsDialog> createState() =>
+      // ignore: no_logic_in_create_state
+      _SettingsDialogState(
+        puzzleSize,
+        sameShuffle,
+        overlayNumbers,
+        recordMoves,
+      );
+}
+
+class _SettingsDialogState extends State<SettingsDialog> {
+  _SettingsDialogState(
+    //BuildContext context,
+    this.puzzleSize,
+    this.sameShuffle,
+    this.overlayNumbers,
+    this.recordMoves,
+  );
+
+  late int puzzleSize;
+  late bool sameShuffle;
+  late bool overlayNumbers;
+  late bool recordMoves;
+
   @override
   Widget build(BuildContext context) {
+    final puzzleSize3x3 = puzzleSize == 3;
+    final puzzleSize4x4 = puzzleSize == 4;
+    final puzzleSize5x5 = puzzleSize == 5;
     return AlertDialog(
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(32)),
       ),
-      backgroundColor: backgroundColor,
+      backgroundColor: widget.backgroundColor,
       // title: Text(
       //   'Settings',
       //   style: TextStyle(color: nameColor),
@@ -101,70 +134,88 @@ class SettingsDialog extends StatelessWidget {
             CheckboxListTile(
               title: Text(
                 '3 x 3',
-                style: TextStyle(color: nameColor),
+                style: TextStyle(color: widget.nameColor),
               ),
               value: puzzleSize3x3,
               onChanged: (val) {
-                parentContext
+                widget.parentContext
                     .read<SettingsControlBloc>()
                     .add(const SettingsSizeTapped(size: 3));
-                Navigator.of(context).pop();
+                setState(() {
+                  puzzleSize = 3;
+                });
               },
             ),
             CheckboxListTile(
               title: Text(
                 '4 x 4',
-                style: TextStyle(color: nameColor),
+                style: TextStyle(color: widget.nameColor),
               ),
               value: puzzleSize4x4,
               onChanged: (val) {
-                parentContext
+                widget.parentContext
                     .read<SettingsControlBloc>()
                     .add(const SettingsSizeTapped(size: 4));
-                Navigator.of(context).pop();
+                setState(() {
+                  puzzleSize = 4;
+                });
               },
             ),
             CheckboxListTile(
               title: Text(
                 '5 x 5',
-                style: TextStyle(color: nameColor),
+                style: TextStyle(color: widget.nameColor),
               ),
               value: puzzleSize5x5,
               onChanged: (val) {
-                parentContext
+                widget.parentContext
                     .read<SettingsControlBloc>()
                     .add(const SettingsSizeTapped(size: 5));
-                Navigator.of(context).pop();
+                setState(() {
+                  puzzleSize = 5;
+                });
               },
             ),
             CheckboxListTile(
               title: Text(
                 'Same shuffle',
-                style: TextStyle(color: nameColor),
+                style: TextStyle(color: widget.nameColor),
               ),
-              value: false,
+              value: sameShuffle,
               onChanged: (val) {
-                Navigator.of(context).pop();
+                // TODO(alpiepho): emit event, https://no-issue.
+                setState(() {
+                  sameShuffle = !sameShuffle;
+                });
+                //Navigator.of(context).pop();
               },
             ),
             CheckboxListTile(
               title: Text(
                 'Overlay numbers',
-                style: TextStyle(color: nameColor),
+                style: TextStyle(color: widget.nameColor),
               ),
-              value: false,
+              value: overlayNumbers,
               onChanged: (val) {
-                Navigator.of(context).pop();
+                // TODO(alpiepho): emit event, https://no-issue.
+                setState(() {
+                  overlayNumbers = !overlayNumbers;
+                });
+                //Navigator.of(context).pop();
               },
             ),
             CheckboxListTile(
               title: Text(
                 'Record moves',
-                style: TextStyle(color: nameColor),
+                style: TextStyle(color: widget.nameColor),
               ),
-              value: false,
+              value: recordMoves,
               onChanged: (val) {
-                Navigator.of(context).pop();
+                // TODO(alpiepho): emit event, https://no-issue.
+                setState(() {
+                  recordMoves = !recordMoves;
+                });
+                //Navigator.of(context).pop();
               },
             ),
           ],

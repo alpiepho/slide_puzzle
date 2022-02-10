@@ -16,7 +16,6 @@ class SettingsControlBloc
     SettingsSizeTapped event,
     Emitter<SettingsControlState> emit,
   ) {
-    print('got ${event.size}\n');
     emit(SettingsControlState(size: event.size));
   }
 }

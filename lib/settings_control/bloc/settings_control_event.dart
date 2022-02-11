@@ -10,10 +10,18 @@ abstract class SettingsControlEvent extends Equatable {
 }
 
 class SettingsSizeTapped extends SettingsControlEvent {
-  const SettingsSizeTapped({required this.size});
+  const SettingsSizeTapped({
+    required this.puzzleSize,
+  });
 
-  final int size;
+  final int puzzleSize;
 
   @override
-  List<Object> get props => [size];
+  List<Object> get props => [puzzleSize];
 }
+
+class SettingsSameShuffleToggle extends SettingsControlEvent {}
+
+class SettingsOverlayNumbersToggle extends SettingsControlEvent {}
+
+class SettingsRecordMovesToggle extends SettingsControlEvent {}

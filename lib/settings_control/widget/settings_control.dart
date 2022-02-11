@@ -3,8 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:very_good_slide_puzzle/settings_control/settings_control.dart';
 import 'package:very_good_slide_puzzle/theme/theme.dart';
 
-// TODO(alpiepho): finish dialog, https://no-issue.
-
 /// {@template settings_control}
 /// Displays dialog for application settings.
 /// {@endtemplate}
@@ -14,17 +12,19 @@ class SettingsControl extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO(alpiepho): move to SettingsDialog, https://no-issue.
     final theme = context.select((ThemeBloc bloc) => bloc.state.theme);
     final nameColor = theme.nameColor;
     final backgroundColor =
         theme.name == 'Simple' ? Colors.white : theme.buttonColor;
-    final puzzleSize =
-        context.select((SettingsControlBloc bloc) => bloc.state.size);
     final parentContext = context;
-    final sameShuffle = false;
-    final overlayNumbers = false;
-    final recordMoves = false;
+    final puzzleSize =
+        context.select((SettingsControlBloc bloc) => bloc.state.puzzleSize);
+    final sameShuffle =
+        context.select((SettingsControlBloc bloc) => bloc.state.sameShuffle);
+    final overlayNumbers =
+        context.select((SettingsControlBloc bloc) => bloc.state.overlayNumbers);
+    final recordMoves =
+        context.select((SettingsControlBloc bloc) => bloc.state.recordMoves);
 
     return MouseRegion(
       cursor: SystemMouseCursors.click,
@@ -93,21 +93,21 @@ class SettingsDialog extends StatefulWidget {
   State<SettingsDialog> createState() =>
       // ignore: no_logic_in_create_state
       _SettingsDialogState(
-        puzzleSize,
-        sameShuffle,
-        overlayNumbers,
-        recordMoves,
+        puzzleSize: puzzleSize,
+        sameShuffle: sameShuffle,
+        overlayNumbers: overlayNumbers,
+        recordMoves: recordMoves,
       );
 }
 
 class _SettingsDialogState extends State<SettingsDialog> {
-  _SettingsDialogState(
+  _SettingsDialogState({
     //BuildContext context,
-    this.puzzleSize,
-    this.sameShuffle,
-    this.overlayNumbers,
-    this.recordMoves,
-  );
+    required this.puzzleSize,
+    required this.sameShuffle,
+    required this.overlayNumbers,
+    required this.recordMoves,
+  });
 
   late int puzzleSize;
   late bool sameShuffle;
@@ -140,7 +140,7 @@ class _SettingsDialogState extends State<SettingsDialog> {
               onChanged: (val) {
                 widget.parentContext
                     .read<SettingsControlBloc>()
-                    .add(const SettingsSizeTapped(size: 3));
+                    .add(const SettingsSizeTapped(puzzleSize: 3));
                 setState(() {
                   puzzleSize = 3;
                 });
@@ -155,7 +155,7 @@ class _SettingsDialogState extends State<SettingsDialog> {
               onChanged: (val) {
                 widget.parentContext
                     .read<SettingsControlBloc>()
-                    .add(const SettingsSizeTapped(size: 4));
+                    .add(const SettingsSizeTapped(puzzleSize: 4));
                 setState(() {
                   puzzleSize = 4;
                 });
@@ -170,7 +170,7 @@ class _SettingsDialogState extends State<SettingsDialog> {
               onChanged: (val) {
                 widget.parentContext
                     .read<SettingsControlBloc>()
-                    .add(const SettingsSizeTapped(size: 5));
+                    .add(const SettingsSizeTapped(puzzleSize: 5));
                 setState(() {
                   puzzleSize = 5;
                 });
@@ -183,7 +183,9 @@ class _SettingsDialogState extends State<SettingsDialog> {
               ),
               value: sameShuffle,
               onChanged: (val) {
-                // TODO(alpiepho): emit event, https://no-issue.
+                widget.parentContext
+                    .read<SettingsControlBloc>()
+                    .add(SettingsSameShuffleToggle());
                 setState(() {
                   sameShuffle = !sameShuffle;
                 });
@@ -197,7 +199,9 @@ class _SettingsDialogState extends State<SettingsDialog> {
               ),
               value: overlayNumbers,
               onChanged: (val) {
-                // TODO(alpiepho): emit event, https://no-issue.
+                widget.parentContext
+                    .read<SettingsControlBloc>()
+                    .add(SettingsOverlayNumbersToggle());
                 setState(() {
                   overlayNumbers = !overlayNumbers;
                 });
@@ -211,7 +215,9 @@ class _SettingsDialogState extends State<SettingsDialog> {
               ),
               value: recordMoves,
               onChanged: (val) {
-                // TODO(alpiepho): emit event, https://no-issue.
+                widget.parentContext
+                    .read<SettingsControlBloc>()
+                    .add(SettingsRecordMovesToggle());
                 setState(() {
                   recordMoves = !recordMoves;
                 });

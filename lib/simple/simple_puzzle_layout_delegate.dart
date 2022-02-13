@@ -134,23 +134,25 @@ class SimplePuzzleLayoutDelegate extends PuzzleLayoutDelegate {
 
   @override
   Widget tileBuilder(Tile tile, PuzzleState state) {
+    final useXsmall = state.puzzle.tiles.length > 16;
+    final useXlarge = state.puzzle.tiles.length < 16;
     return ResponsiveLayoutBuilder(
       small: (_, __) => SimplePuzzleTile(
         key: Key('simple_puzzle_tile_${tile.value}_small'),
         tile: tile,
-        tileFontSize: _TileFontSize.small,
+        tileFontSize: useXsmall ? _TileFontSize.xsmall : _TileFontSize.small,
         state: state,
       ),
       medium: (_, __) => SimplePuzzleTile(
         key: Key('simple_puzzle_tile_${tile.value}_medium'),
         tile: tile,
-        tileFontSize: _TileFontSize.medium,
+        tileFontSize: useXlarge ? _TileFontSize.large : _TileFontSize.medium,
         state: state,
       ),
       large: (_, __) => SimplePuzzleTile(
         key: Key('simple_puzzle_tile_${tile.value}_large'),
         tile: tile,
-        tileFontSize: _TileFontSize.large,
+        tileFontSize: useXlarge ? _TileFontSize.xlarge : _TileFontSize.large,
         state: state,
       ),
     );
@@ -292,9 +294,11 @@ class SimplePuzzleBoard extends StatelessWidget {
 }
 
 abstract class _TileFontSize {
+  static double xsmall = 24;
   static double small = 36;
   static double medium = 50;
   static double large = 54;
+  static double xlarge = 64;
 }
 
 /// {@template simple_puzzle_tile}

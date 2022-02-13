@@ -138,12 +138,13 @@ class _SettingsDialogState extends State<SettingsDialog> {
               ),
               value: puzzleSize3x3,
               onChanged: (val) {
-                widget.parentContext
-                    .read<SettingsControlBloc>()
-                    .add(const SettingsSizeTapped(puzzleSize: 3));
-                setState(() {
-                  puzzleSize = 3;
-                });
+                // TODO reenable
+                // widget.parentContext
+                //     .read<SettingsControlBloc>()
+                //     .add(const SettingsSizeTapped(puzzleSize: 3));
+                // setState(() {
+                //   puzzleSize = 3;
+                // });
               },
             ),
             CheckboxListTile(
@@ -153,12 +154,13 @@ class _SettingsDialogState extends State<SettingsDialog> {
               ),
               value: puzzleSize4x4,
               onChanged: (val) {
-                widget.parentContext
-                    .read<SettingsControlBloc>()
-                    .add(const SettingsSizeTapped(puzzleSize: 4));
-                setState(() {
-                  puzzleSize = 4;
-                });
+                // TODO reenable
+                //   widget.parentContext
+                //       .read<SettingsControlBloc>()
+                //       .add(const SettingsSizeTapped(puzzleSize: 4));
+                //   setState(() {
+                //     puzzleSize = 4;
+                //   });
               },
             ),
             CheckboxListTile(
@@ -168,12 +170,13 @@ class _SettingsDialogState extends State<SettingsDialog> {
               ),
               value: puzzleSize5x5,
               onChanged: (val) {
-                widget.parentContext
-                    .read<SettingsControlBloc>()
-                    .add(const SettingsSizeTapped(puzzleSize: 5));
-                setState(() {
-                  puzzleSize = 5;
-                });
+                // TODO reenable
+                //   widget.parentContext
+                //       .read<SettingsControlBloc>()
+                //       .add(const SettingsSizeTapped(puzzleSize: 5));
+                //   setState(() {
+                //     puzzleSize = 5;
+                //   });
               },
             ),
             CheckboxListTile(

@@ -6,6 +6,7 @@
 // https://opensource.org/licenses/MIT.
 
 // ignore_for_file: public_member_api_docs, avoid_print
+// ignore_for_file: unnecessary_brace_in_string_interps
 
 import 'dart:async';
 
@@ -73,6 +74,30 @@ class _AppState extends State<App> {
           Image.asset('assets/images/dashatar/yellow/$i.png').image,
           context,
         );
+      }
+      for (var size = 3; size <= 5; size++) {
+        for (var row = 1; row <= 3; row++) {
+          for (var col = 1; col <= 3; col++) {
+            final gAsset =
+                'assets/images/dashatar/green$size${size}/green_0${row}_0$col.png';
+            final bAsset =
+                'assets/images/dashatar/blue${size}${size}/green_0${row}_0$col.png';
+            final yAsset =
+                'assets/images/dashatar/yellow${size}${size}/green_0${row}_0$col.png';
+            precacheImage(
+              Image.asset(gAsset).image,
+              context,
+            );
+            precacheImage(
+              Image.asset(bAsset).image,
+              context,
+            );
+            precacheImage(
+              Image.asset(yAsset).image,
+              context,
+            );
+          }
+        }
       }
       precacheImage(
         Image.asset('assets/images/dashatar/gallery/green.png').image,

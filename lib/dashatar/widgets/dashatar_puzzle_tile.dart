@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,6 +12,8 @@ import 'package:very_good_slide_puzzle/layout/layout.dart';
 import 'package:very_good_slide_puzzle/models/models.dart';
 import 'package:very_good_slide_puzzle/puzzle/puzzle.dart';
 import 'package:very_good_slide_puzzle/theme/themes/themes.dart';
+
+import 'package:image/image.dart' as imglib;
 
 abstract class _TileSize {
   static double small = 75;
@@ -86,6 +89,67 @@ class DashatarPuzzleTileState extends State<DashatarPuzzleTile>
     super.dispose();
   }
 
+  // Image copyCrop(Image src, int x, int y, int w, int h) {
+  //   // Make sure crop rectangle is within the range of the src image.
+  //   src.
+  //   x = x.clamp(0, src.width - 1).toInt();
+  //   y = y.clamp(0, src.height - 1).toInt();
+  //   if (x + w > src.width.toInt()) {
+  //     w = src.width - x;
+  //   }
+  //   if (y + h > src.height) {
+  //     h = src.height - y;
+  //   }
+
+  //   final dst = Image(
+  //     width: w,
+  //     height: h,
+  //     src,
+  //     image: src.image,
+  //   );
+
+  //   for (var yi = 0, sy = y; yi < h; ++yi, ++sy) {
+  //     for (var xi = 0, sx = x; xi < w; ++xi, ++sx) {
+  //       dst.setPixel(xi, yi, src.getPixel(sx, sy));
+  //     }
+  //   }
+
+  //   return dst;
+  // }
+
+  List<Image> splitImage(List<int> input, int splitSize) {
+    final output = <Image>[];
+
+    // convert image to image from image package
+    final image = imglib.decodeImage(input);
+
+    if (image != null) {
+      var x = 0, y = 0;
+      final width = (image.width / splitSize).round();
+      final height = (image.height / splitSize).round();
+
+      // split image to parts
+      List<imglib.Image> parts = [];
+      for (var i = 0; i < splitSize; i++) {
+        for (var j = 0; j < splitSize; j++) {
+          parts.add(imglib.copyCrop(image, x, y, width, height));
+          x += width;
+        }
+        x = 0;
+        y += height;
+      }
+
+      // convert image from image package to Image Widget to display
+      for (final img in parts) {
+        final iList = imglib.encodeJpg(img);
+        final u8List = Uint8List.fromList(iList);
+        output.add(Image.memory(u8List));
+      }
+    }
+
+    return output;
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = widget.state.puzzle.getDimension();
@@ -102,6 +166,20 @@ class DashatarPuzzleTileState extends State<DashatarPuzzleTile>
         : const Duration(milliseconds: 370);
 
     final canPress = hasStarted && puzzleIncomplete;
+
+    final img = Image.asset(
+      theme.themeAsset, //.dashAssetForTile(widget.tile),
+      //scale: 10,
+      semanticLabel: context.l10n.puzzleTileLabelText(
+        widget.tile.value.toString(),
+        widget.tile.currentPosition.x.toString(),
+        widget.tile.currentPosition.y.toString(),
+      ),
+      fit: BoxFit.cover,
+    );
+    // img.
+    // // ignore: avoid_dynamic_calls
+    // final img2 = IImage.copyCrop(img, 0, 0, 100, 100);
 
     return AudioControlListener(
       audioPlayer: _audioPlayer,
@@ -150,13 +228,9 @@ class DashatarPuzzleTileState extends State<DashatarPuzzleTile>
                         unawaited(_audioPlayer?.replay());
                       }
                     : null,
-                icon: Image.asset(
-                  theme.dashAssetForTile(widget.tile),
-                  semanticLabel: context.l10n.puzzleTileLabelText(
-                    widget.tile.value.toString(),
-                    widget.tile.currentPosition.x.toString(),
-                    widget.tile.currentPosition.y.toString(),
-                  ),
+                icon: ClipRRect(
+                  borderRadius: const BorderRadius.all(Radius.circular(20)),
+                  child: img,
                 ),
               ),
             ),

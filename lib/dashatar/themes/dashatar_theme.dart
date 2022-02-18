@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' as p;
 import 'package:very_good_slide_puzzle/colors/colors.dart';
@@ -83,6 +85,19 @@ abstract class DashatarTheme extends PuzzleTheme {
   /// The dash asset for the i-th tile may be found in the file i.png.
   String dashAssetForTile(Tile tile) =>
       p.join(dashAssetsDirectory, '${tile.value.toString()}.png');
+
+  /// The dash asset for the i-th tile may be found in the file i.png.
+  String dashAssetForTileBySize(Tile tile, int puzzleSize) {
+    final sizeString = '$puzzleSize$puzzleSize';
+    final xString = '0${tile.correctPosition.x.toString()}';
+    final yString = '0${tile.correctPosition.y.toString()}';
+    final colorString = dashAssetsDirectory.split('/').last;
+    final tileString = '${colorString}_${yString}_$xString.png';
+    return p.join(
+      dashAssetsDirectory + sizeString,
+      tileString,
+    );
+  }
 
   @override
   List<Object?> get props => [

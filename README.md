@@ -13,9 +13,9 @@ Run it here: [https://alpiepho.github.io/slide_puzzle/](https://alpiepho.github.
 - [x] currently a 4x4 puzzle
 - [x] settings dialog for 3x3 and 4x4
 - [x] adjust simple fonts for 3x3 and 5x5
-- [ ] new dashtar images for 3x3, 4x4, 5x5, success for colors
-- [ ] import images
-- [ ] access images based on puzzle size
+- [x] new dashtar images for 3x3, 4x4, 5x5, ~~success for colors~~
+- [x] import images
+- [x] access images based on puzzle size
 - [ ] dynamically use puzzleSize and re-enable checkboxes
 
 

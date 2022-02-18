@@ -81,9 +81,9 @@ class _AppState extends State<App> {
             final gAsset =
                 'assets/images/dashatar/green$size${size}/green_0${row}_0$col.png';
             final bAsset =
-                'assets/images/dashatar/blue${size}${size}/green_0${row}_0$col.png';
+                'assets/images/dashatar/blue${size}${size}/blue_0${row}_0$col.png';
             final yAsset =
-                'assets/images/dashatar/yellow${size}${size}/green_0${row}_0$col.png';
+                'assets/images/dashatar/yellow${size}${size}/yellow_0${row}_0$col.png';
             precacheImage(
               Image.asset(gAsset).image,
               context,

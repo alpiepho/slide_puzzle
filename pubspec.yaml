@@ -22,7 +22,6 @@ dependencies:
   just_audio: ^0.9.18
   universal_platform: ^1.0.0+1
   url_launcher: ^6.0.17
-  image: ^3.1.1
 
 dev_dependencies:
   bloc_test: ^9.0.2
@@ -43,6 +42,16 @@ flutter:
     - assets/images/dashatar/green/
     - assets/images/dashatar/blue/
     - assets/images/dashatar/yellow/
+    - assets/images/dashatar/green33/
+    - assets/images/dashatar/green44/
+    - assets/images/dashatar/green55/
+    - assets/images/dashatar/blue33/
+    - assets/images/dashatar/blue44/
+    - assets/images/dashatar/blue55/
+    - assets/images/dashatar/yellow33/
+    - assets/images/dashatar/yellow44/
+    - assets/images/dashatar/yellow55/
+
   fonts:
     - family: GoogleSans
       fonts:

@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:just_audio/just_audio.dart';
@@ -9,6 +10,7 @@ import 'package:very_good_slide_puzzle/l10n/l10n.dart';
 import 'package:very_good_slide_puzzle/layout/layout.dart';
 import 'package:very_good_slide_puzzle/models/models.dart';
 import 'package:very_good_slide_puzzle/puzzle/puzzle.dart';
+import 'package:very_good_slide_puzzle/settings_control/settings_control.dart';
 import 'package:very_good_slide_puzzle/theme/themes/themes.dart';
 
 abstract class _TileSize {
@@ -102,16 +104,11 @@ class DashatarPuzzleTileState extends State<DashatarPuzzleTile>
 
     final canPress = hasStarted && puzzleIncomplete;
 
-    // icon: Image.asset(
-    //   theme.dashAssetForTile(widget.tile),
-    //   semanticLabel: context.l10n.puzzleTileLabelText(
-    //     widget.tile.value.toString(),
-    //     widget.tile.currentPosition.x.toString(),
-    //     widget.tile.currentPosition.y.toString(),
-    //   ),
+    final puzzleSize =
+        context.select((SettingsControlBloc bloc) => bloc.state.puzzleSize);
 
     final imgAsset = Image.asset(
-      theme.dashAssetForTileBySize(widget.tile, 4),
+      theme.dashAssetForTileBySize(widget.tile, puzzleSize),
       scale: 0.5,
       semanticLabel: context.l10n.puzzleTileLabelText(
         widget.tile.value.toString(),

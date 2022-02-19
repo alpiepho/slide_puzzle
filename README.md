@@ -16,23 +16,26 @@ Run it here: [https://alpiepho.github.io/slide_puzzle/](https://alpiepho.github.
 - [x] new dashtar images for 3x3, 4x4, 5x5, ~~success for colors~~
 - [x] import images
 - [x] access images based on puzzle size
-- [ ] dynamically use puzzleSize and re-enable checkboxes
-
+- [x] dynamically use puzzleSize and re-enable checkboxes
+- [ ] tune dashatar tile sizes 3x3 and 5x5
+- [ ] change size upon size checkbox? warning?
 
 
 ### User help features
 - [x] checkbox to overlay numbers on tiles
 - [x] checkbox for same shuffle
 - [x] checkbox for record moves
-- [ ] new dashtar images with numbers for 3x3, 4x4, 5x5, success for colors
+- [ ] new dashtar images with numbers for 3x3, 4x4, 5x5
+- [ ] new dashtar images 3x3, 4x4, 5x5 for success
 - [ ] dynamically use overlayNumbers
 - [ ] save last shuffle
 - [ ] use last shuffle when selected
+
+
+### User advanced help features
 - [ ] record moves button (record/stop)
 - [ ] record moves (echo to output)
 - [ ] playback button
-
-### User advanced help features
 - [ ] implement solver and playback?
 
 ### User pictures

@@ -98,8 +98,10 @@ class PuzzleView extends StatelessWidget {
                 ),
               ),
               BlocProvider(
-                create: (context) => PuzzleBloc(4)
-                  ..add(
+                create: (context) => PuzzleBloc(
+                  4,
+                  settingsBloc: BlocProvider.of<SettingsControlBloc>(context),
+                )..add(
                     PuzzleInitialized(
                       shufflePuzzle: shufflePuzzle,
                     ),

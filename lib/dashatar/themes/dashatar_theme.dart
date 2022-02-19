@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' as p;
 import 'package:very_good_slide_puzzle/colors/colors.dart';

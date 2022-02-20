@@ -14,9 +14,15 @@ import 'package:very_good_slide_puzzle/settings_control/settings_control.dart';
 import 'package:very_good_slide_puzzle/theme/themes/themes.dart';
 
 abstract class _TileSize {
-  static double small = 75;
-  static double medium = 100;
-  static double large = 112;
+  static double small_3x3 = 100;
+  static double small_4x4 = 75;
+  static double small_5x5 = 60;
+  static double medium_3x3 = 130;
+  static double medium_4x4 = 100;
+  static double medium_5x5 = 80;
+  static double large_3x3 = 145;
+  static double large_4x4 = 112;
+  static double large_5x5 = 85;
 }
 
 /// {@template dashatar_puzzle_tile}
@@ -130,17 +136,25 @@ class DashatarPuzzleTileState extends State<DashatarPuzzleTile>
         child: ResponsiveLayoutBuilder(
           small: (_, child) => SizedBox.square(
             key: Key('dashatar_puzzle_tile_small_${widget.tile.value}'),
-            dimension: _TileSize.small,
+            dimension: puzzleSize == 3
+                ? _TileSize.small_3x3
+                : (puzzleSize == 5 ? _TileSize.small_5x5 : _TileSize.small_4x4),
             child: child,
           ),
           medium: (_, child) => SizedBox.square(
             key: Key('dashatar_puzzle_tile_medium_${widget.tile.value}'),
-            dimension: _TileSize.medium,
+            dimension: puzzleSize == 3
+                ? _TileSize.medium_3x3
+                : (puzzleSize == 5
+                    ? _TileSize.medium_5x5
+                    : _TileSize.medium_4x4),
             child: child,
           ),
           large: (_, child) => SizedBox.square(
             key: Key('dashatar_puzzle_tile_large_${widget.tile.value}'),
-            dimension: _TileSize.large,
+            dimension: puzzleSize == 3
+                ? _TileSize.large_3x3
+                : (puzzleSize == 5 ? _TileSize.large_5x5 : _TileSize.large_4x4),
             child: child,
           ),
           child: (_) => MouseRegion(

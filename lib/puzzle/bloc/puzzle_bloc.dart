@@ -27,7 +27,6 @@ class PuzzleBloc extends Bloc<PuzzleEvent, PuzzleState> {
     PuzzleInitialized event,
     Emitter<PuzzleState> emit,
   ) {
-    //TODO: get size from Settings Bloc
     _size = 4;
     if (settingsBloc != null) {
       _size = settingsBloc!.state.puzzleSize;

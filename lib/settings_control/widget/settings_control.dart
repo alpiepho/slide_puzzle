@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:very_good_slide_puzzle/puzzle/bloc/puzzle_bloc.dart';
 import 'package:very_good_slide_puzzle/settings_control/settings_control.dart';
 import 'package:very_good_slide_puzzle/theme/theme.dart';
+import 'package:very_good_slide_puzzle/typography/typography.dart';
 
 /// {@template settings_control}
 /// Displays dialog for application settings.
@@ -133,8 +135,10 @@ class _SettingsDialogState extends State<SettingsDialog> {
           children: <Widget>[
             CheckboxListTile(
               title: Text(
-                '3 x 3',
-                style: TextStyle(color: widget.nameColor),
+                'new 3 x 3',
+                style: PuzzleTextStyle.bodySmall.copyWith(
+                  color: widget.nameColor,
+                ),
               ),
               value: puzzleSize3x3,
               onChanged: (val) {
@@ -144,12 +148,19 @@ class _SettingsDialogState extends State<SettingsDialog> {
                 setState(() {
                   puzzleSize = 3;
                 });
+                widget.parentContext.read<PuzzleBloc>().add(
+                      const PuzzleInitialized(
+                        shufflePuzzle: false,
+                      ),
+                    );
               },
             ),
             CheckboxListTile(
               title: Text(
-                '4 x 4',
-                style: TextStyle(color: widget.nameColor),
+                'new 4 x 4',
+                style: PuzzleTextStyle.bodySmall.copyWith(
+                  color: widget.nameColor,
+                ),
               ),
               value: puzzleSize4x4,
               onChanged: (val) {
@@ -159,12 +170,19 @@ class _SettingsDialogState extends State<SettingsDialog> {
                 setState(() {
                   puzzleSize = 4;
                 });
+                widget.parentContext.read<PuzzleBloc>().add(
+                      const PuzzleInitialized(
+                        shufflePuzzle: false,
+                      ),
+                    );
               },
             ),
             CheckboxListTile(
               title: Text(
-                '5 x 5',
-                style: TextStyle(color: widget.nameColor),
+                'new 5 x 5',
+                style: PuzzleTextStyle.bodySmall.copyWith(
+                  color: widget.nameColor,
+                ),
               ),
               value: puzzleSize5x5,
               onChanged: (val) {
@@ -174,13 +192,21 @@ class _SettingsDialogState extends State<SettingsDialog> {
                 setState(() {
                   puzzleSize = 5;
                 });
+                widget.parentContext.read<PuzzleBloc>().add(
+                      const PuzzleInitialized(
+                        shufflePuzzle: false,
+                      ),
+                    );
               },
             ),
             CheckboxListTile(
               title: Text(
                 'Same shuffle',
-                style: TextStyle(color: widget.nameColor),
+                style: PuzzleTextStyle.bodySmall.copyWith(
+                  color: widget.nameColor,
+                ),
               ),
+              subtitle: const Text('tbd'),
               value: sameShuffle,
               onChanged: (val) {
                 widget.parentContext
@@ -195,8 +221,11 @@ class _SettingsDialogState extends State<SettingsDialog> {
             CheckboxListTile(
               title: Text(
                 'Overlay numbers',
-                style: TextStyle(color: widget.nameColor),
+                style: PuzzleTextStyle.bodySmall.copyWith(
+                  color: widget.nameColor,
+                ),
               ),
+              subtitle: const Text('tbd'),
               value: overlayNumbers,
               onChanged: (val) {
                 widget.parentContext
@@ -211,8 +240,11 @@ class _SettingsDialogState extends State<SettingsDialog> {
             CheckboxListTile(
               title: Text(
                 'Record moves',
-                style: TextStyle(color: widget.nameColor),
+                style: PuzzleTextStyle.bodySmall.copyWith(
+                  color: widget.nameColor,
+                ),
               ),
+              subtitle: const Text('tbd'),
               value: recordMoves,
               onChanged: (val) {
                 widget.parentContext

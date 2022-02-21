@@ -37,6 +37,7 @@ Optionally, load as PWA to yout phone.  On IOS Safari, look for middle up botton
 - [ ] local persistent storage of puzzle state
 - [ ] local persistent storage of puzzle theme
 - [ ] local persistent storage of puzzle audio
+- [ ] review for code refactor and updated testing
 
 
 ### User help features
@@ -45,9 +46,9 @@ Optionally, load as PWA to yout phone.  On IOS Safari, look for middle up botton
 - [x] checkbox for record moves
 - [-] save last shuffle
 - [x] use last shuffle when selected
-- [ ] new dashtar images with numbers for 3x3, 4x4, 5x5
+- [-] new dashtar images with numbers for 3x3, 4x4, 5x5
+- [x] dynamically use overlayNumbers
 - [ ] new dashtar images 3x3, 4x4, 5x5 for success
-- [ ] dynamically use overlayNumbers
 
 
 ### User advanced help features

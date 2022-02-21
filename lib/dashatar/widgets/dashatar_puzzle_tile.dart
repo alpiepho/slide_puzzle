@@ -113,6 +113,9 @@ class DashatarPuzzleTileState extends State<DashatarPuzzleTile>
     final puzzleSize =
         context.select((SettingsControlBloc bloc) => bloc.state.puzzleSize);
 
+    final overlayNumbers =
+        context.select((SettingsControlBloc bloc) => bloc.state.overlayNumbers);
+
     final imgAsset = Image.asset(
       theme.dashAssetForTileBySize(widget.tile, puzzleSize),
       scale: 0.5,
@@ -179,9 +182,17 @@ class DashatarPuzzleTileState extends State<DashatarPuzzleTile>
                         unawaited(_audioPlayer?.replay());
                       }
                     : null,
-                icon: ClipRRect(
-                  borderRadius: const BorderRadius.all(Radius.circular(10)),
-                  child: imgAsset,
+                icon: Stack(
+                  children: [
+                    ClipRRect(
+                      borderRadius: const BorderRadius.all(Radius.circular(10)),
+                      child: imgAsset,
+                    ),
+                    Visibility(
+                      visible: overlayNumbers,
+                      child: Text('${widget.tile.value}'),
+                    )
+                  ],
                 ),
               ),
             ),

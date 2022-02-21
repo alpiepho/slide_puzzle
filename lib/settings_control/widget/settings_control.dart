@@ -224,7 +224,6 @@ class _SettingsDialogState extends State<SettingsDialog> {
                   color: widget.nameColor,
                 ),
               ),
-              subtitle: const Text('tbd'),
               value: overlayNumbers,
               onChanged: (val) {
                 widget.parentContext

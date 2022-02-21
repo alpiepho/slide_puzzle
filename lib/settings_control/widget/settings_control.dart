@@ -206,7 +206,6 @@ class _SettingsDialogState extends State<SettingsDialog> {
                   color: widget.nameColor,
                 ),
               ),
-              subtitle: const Text('tbd'),
               value: sameShuffle,
               onChanged: (val) {
                 widget.parentContext

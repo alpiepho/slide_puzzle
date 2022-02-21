@@ -3,6 +3,20 @@
 This is a fork of the Slide Puzzle.  Look for big logo below for original README.md.
 
 Run it here: [https://alpiepho.github.io/slide_puzzle/](https://alpiepho.github.io/slide_puzzle/)
+
+Optionally, load as PWA to yout phone.  On IOS Safari, look for middle up botton, then "Add to Home Screen".  Similar for Android. (TBD clearer instructions)
+
+## Feature Changes
+
+- build and hosted as PWA fron Github pages
+- added settings (gear) button
+- added settings dialog with instant changes to settings
+- added support for 3x3 and 5x5 puzzles
+- added support for (user learn) same shuffle with same init state and same seeds used for subsequent shuffle
+
+
+
+
 ## Ideas
 
 ### Serve as PWA (Progressive Web Applicaiton)
@@ -17,19 +31,23 @@ Run it here: [https://alpiepho.github.io/slide_puzzle/](https://alpiepho.github.
 - [x] import images
 - [x] access images based on puzzle size
 - [x] dynamically use puzzleSize and re-enable checkboxes
-- [ ] tune dashatar tile sizes 3x3 and 5x5
-- [ ] change size upon size checkbox? warning?
+- [x] tune dashatar tile sizes 3x3 and 5x5
+- [x] change size upon size checkbox? warning?
+- [ ] local persistent storage of puzzle settings
+- [ ] local persistent storage of puzzle state
+- [ ] local persistent storage of puzzle theme
+- [ ] local persistent storage of puzzle audio
 
 
 ### User help features
 - [x] checkbox to overlay numbers on tiles
 - [x] checkbox for same shuffle
 - [x] checkbox for record moves
+- [-] save last shuffle
+- [x] use last shuffle when selected
 - [ ] new dashtar images with numbers for 3x3, 4x4, 5x5
 - [ ] new dashtar images 3x3, 4x4, 5x5 for success
 - [ ] dynamically use overlayNumbers
-- [ ] save last shuffle
-- [ ] use last shuffle when selected
 
 
 ### User advanced help features

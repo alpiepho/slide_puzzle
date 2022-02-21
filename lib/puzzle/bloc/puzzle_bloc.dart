@@ -21,7 +21,8 @@ class PuzzleBloc extends Bloc<PuzzleEvent, PuzzleState> {
   int _size;
   final SettingsControlBloc? settingsBloc;
 
-  final Random? random;
+  Random? random;
+  int _seed = 0;
 
   void _onPuzzleInitialized(
     PuzzleInitialized event,
@@ -30,6 +31,11 @@ class PuzzleBloc extends Bloc<PuzzleEvent, PuzzleState> {
     _size = 4;
     if (settingsBloc != null) {
       _size = settingsBloc!.state.puzzleSize;
+      if (settingsBloc!.state.sameShuffle) {
+        _seed = 0;
+        random = Random(_seed);
+        _seed += 1;
+      }
     }
 
     final puzzle = _generatePuzzle(_size, shuffle: event.shufflePuzzle);
@@ -112,6 +118,10 @@ class PuzzleBloc extends Bloc<PuzzleEvent, PuzzleState> {
     }
 
     if (shuffle) {
+      if (settingsBloc!.state.sameShuffle) {
+        random = Random(_seed);
+        _seed += 1;
+      }
       // Randomize only the current tile posistions.
       currentPositions.shuffle(random);
     }

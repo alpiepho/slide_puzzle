@@ -2,18 +2,19 @@
 
 part of 'settings_control_bloc.dart';
 
+// ignore: must_be_immutable
 class SettingsControlState extends Equatable {
-  const SettingsControlState({
+  SettingsControlState({
     this.puzzleSize = 4,
     this.sameShuffle = false,
     this.overlayNumbers = false,
     this.recordMoves = false,
   });
 
-  final int puzzleSize;
-  final bool sameShuffle;
-  final bool overlayNumbers;
-  final bool recordMoves;
+  late int puzzleSize;
+  late bool sameShuffle;
+  late bool overlayNumbers;
+  late bool recordMoves;
 
   @override
   List<Object> get props =>

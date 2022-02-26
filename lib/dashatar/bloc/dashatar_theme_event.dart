@@ -6,6 +6,11 @@ abstract class DashatarThemeEvent extends Equatable {
   const DashatarThemeEvent();
 }
 
+class DashatarThemeInitialized extends DashatarThemeEvent {
+  @override
+  List<Object?> get props => [];
+}
+
 class DashatarThemeChanged extends DashatarThemeEvent {
   const DashatarThemeChanged({required this.themeIndex});
 

@@ -4,7 +4,7 @@ This is a fork of the Slide Puzzle.  Look for big logo below for original README
 
 Run it here: [https://alpiepho.github.io/slide_puzzle/](https://alpiepho.github.io/slide_puzzle/)
 
-Optionally, load as PWA to yout phone.  On IOS Safari, look for middle up botton, then "Add to Home Screen".  Similar for Android. (TBD clearer instructions)
+Optionally, load as PWA to you phone.  On IOS Safari, look for middle up botton, then "Add to Home Screen".  Similar for Android Chrome Browser.
 
 ## Feature Changes
 
@@ -12,7 +12,9 @@ Optionally, load as PWA to yout phone.  On IOS Safari, look for middle up botton
 - added settings (gear) button
 - added settings dialog with instant changes to settings
 - added support for 3x3 and 5x5 puzzles
-- added support for (user learn) same shuffle with same init state and same seeds used for subsequent shuffle
+- added support for same shuffle with same init state and same seeds used for subsequent shuffle
+- added persistence of settings
+- added persistence of theme
 
 
 
@@ -33,10 +35,12 @@ Optionally, load as PWA to yout phone.  On IOS Safari, look for middle up botton
 - [x] dynamically use puzzleSize and re-enable checkboxes
 - [x] tune dashatar tile sizes 3x3 and 5x5
 - [x] change size upon size checkbox? warning?
-- [ ] local persistent storage of puzzle settings
-- [ ] local persistent storage of puzzle state
-- [ ] local persistent storage of puzzle theme
+- [x] local persistent storage of puzzle settings
+- [-] local persistent storage of puzzle state
+- [x] local persistent storage of puzzle theme
 - [ ] local persistent storage of puzzle audio
+- [ ] review TODO items
+- [ ] review "// ingore" tags
 - [ ] review for code refactor and updated testing
 
 
@@ -67,6 +71,11 @@ Optionally, load as PWA to yout phone.  On IOS Safari, look for middle up botton
 - [ ] clean up "problems"
 - [ ] move annimations
 - [ ] add commentary to playback ("Rocket League" mode)
+
+
+### References
+
+- https://stackoverflow.com/questions/60366893/futurebuilder-doesnt-work-when-used-with-sharedpreferences
 
 
 

@@ -20,6 +20,8 @@ class SettingsSizeTapped extends SettingsControlEvent {
   List<Object> get props => [puzzleSize];
 }
 
+class SettingsInitialized extends SettingsControlEvent {}
+
 class SettingsSameShuffleToggle extends SettingsControlEvent {}
 
 class SettingsOverlayNumbersToggle extends SettingsControlEvent {}

@@ -7,6 +7,7 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:very_good_slide_puzzle/audio_control/audio_control.dart';
 import 'package:very_good_slide_puzzle/dashatar/dashatar.dart';
 import 'package:very_good_slide_puzzle/puzzle/puzzle.dart';
@@ -15,6 +16,8 @@ import 'package:very_good_slide_puzzle/timer/timer.dart';
 import '../../helpers/helpers.dart';
 
 void main() {
+  final prefs = SharedPreferences.getInstance() as SharedPreferences;
+
   group('DashatarPuzzleBoard', () {
     late PuzzleBloc puzzleBloc;
     late PuzzleState puzzleState;
@@ -35,7 +38,7 @@ void main() {
         'shows DashatarShareDialog '
         'when PuzzleStatus is complete', (tester) async {
       final dashatarThemeBloc =
-          DashatarThemeBloc(themes: [GreenDashatarTheme()]);
+          DashatarThemeBloc(prefs, themes: [GreenDashatarTheme()]);
       final timerBloc = MockTimerBloc();
       when(() => timerBloc.state).thenReturn(TimerState());
       final controller = StreamController<PuzzleState>()..add(PuzzleState());

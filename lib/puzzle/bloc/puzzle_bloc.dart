@@ -28,7 +28,6 @@ class PuzzleBloc extends Bloc<PuzzleEvent, PuzzleState> {
     PuzzleInitialized event,
     Emitter<PuzzleState> emit,
   ) {
-    _size = 4;
     if (settingsBloc != null) {
       _size = settingsBloc!.state.puzzleSize;
       if (settingsBloc!.state.sameShuffle) {

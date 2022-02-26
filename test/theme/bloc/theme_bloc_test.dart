@@ -2,6 +2,7 @@
 
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:very_good_slide_puzzle/dashatar/dashatar.dart';
 import 'package:very_good_slide_puzzle/simple/simple.dart';
 import 'package:very_good_slide_puzzle/theme/theme.dart';
@@ -9,11 +10,13 @@ import 'package:very_good_slide_puzzle/theme/theme.dart';
 import '../../helpers/helpers.dart';
 
 void main() {
+  final prefs = SharedPreferences.getInstance() as SharedPreferences;
+
   group('ThemeBloc', () {
     test('initial state is ThemeState', () {
       final themes = [MockPuzzleTheme()];
       expect(
-        ThemeBloc(initialThemes: themes).state,
+        ThemeBloc(prefs, initialThemes: themes).state,
         equals(ThemeState(themes: themes)),
       );
     });
@@ -28,7 +31,7 @@ void main() {
           theme = MockPuzzleTheme();
           themes = [MockPuzzleTheme(), theme];
         },
-        build: () => ThemeBloc(initialThemes: themes),
+        build: () => ThemeBloc(prefs, initialThemes: themes),
         act: (bloc) => bloc.add(ThemeChanged(themeIndex: 1)),
         expect: () => <ThemeState>[
           ThemeState(themes: themes, theme: theme),
@@ -51,7 +54,7 @@ void main() {
             GreenDashatarTheme(),
           ];
         },
-        build: () => ThemeBloc(initialThemes: themes),
+        build: () => ThemeBloc(prefs, initialThemes: themes),
         act: (bloc) => bloc.add(ThemeUpdated(theme: YellowDashatarTheme())),
         expect: () => <ThemeState>[
           ThemeState(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:very_good_slide_puzzle/audio_control/audio_control.dart';
 import 'package:very_good_slide_puzzle/dashatar/dashatar.dart';
 import 'package:very_good_slide_puzzle/l10n/l10n.dart';
@@ -23,46 +24,71 @@ class PuzzlePage extends StatelessWidget {
   /// {@macro puzzle_page}
   const PuzzlePage({Key? key}) : super(key: key);
 
+  Future<SharedPreferences> _getPrefs() async {
+    final sp = await SharedPreferences.getInstance();
+    return sp;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (_) => DashatarThemeBloc(
-            themes: const [
-              BlueDashatarTheme(),
-              GreenDashatarTheme(),
-              YellowDashatarTheme()
+    // TODO(alpiepho): refactor as FuturePuzzleView, https:/URL-to-issue.
+    return FutureBuilder<SharedPreferences>(
+      future: _getPrefs(),
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) {
+          return const Text('...');
+        } else {
+          final prefs = snapshot.data;
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (_) => DashatarThemeBloc(
+                  prefs!,
+                  themes: const [
+                    BlueDashatarTheme(),
+                    GreenDashatarTheme(),
+                    YellowDashatarTheme()
+                  ],
+                )..add(
+                    DashatarThemeInitialized(),
+                  ),
+              ),
+              BlocProvider(
+                create: (_) => DashatarPuzzleBloc(
+                  secondsToBegin: 3,
+                  ticker: const Ticker(),
+                ),
+              ),
+              BlocProvider(
+                create: (context) => ThemeBloc(
+                  prefs!,
+                  initialThemes: [
+                    const SimpleTheme(),
+                    context.read<DashatarThemeBloc>().state.theme,
+                  ],
+                )..add(
+                    ThemeInitialized(),
+                  ),
+              ),
+              BlocProvider(
+                create: (_) => TimerBloc(
+                  ticker: const Ticker(),
+                ),
+              ),
+              BlocProvider(
+                create: (_) => AudioControlBloc(),
+              ),
+              BlocProvider(
+                create: (_) => SettingsControlBloc(prefs!)
+                  ..add(
+                    SettingsInitialized(),
+                  ),
+              ),
             ],
-          ),
-        ),
-        BlocProvider(
-          create: (_) => DashatarPuzzleBloc(
-            secondsToBegin: 3,
-            ticker: const Ticker(),
-          ),
-        ),
-        BlocProvider(
-          create: (context) => ThemeBloc(
-            initialThemes: [
-              const SimpleTheme(),
-              context.read<DashatarThemeBloc>().state.theme,
-            ],
-          ),
-        ),
-        BlocProvider(
-          create: (_) => TimerBloc(
-            ticker: const Ticker(),
-          ),
-        ),
-        BlocProvider(
-          create: (_) => AudioControlBloc(),
-        ),
-        BlocProvider(
-          create: (_) => SettingsControlBloc(),
-        ),
-      ],
-      child: const PuzzleView(),
+            child: const PuzzleView(),
+          );
+        }
+      },
     );
   }
 }
@@ -79,7 +105,7 @@ class PuzzleView extends StatelessWidget {
     final theme = context.select((ThemeBloc bloc) => bloc.state.theme);
 
     /// Shuffle only if the current theme is Simple.
-    final shufflePuzzle = theme is SimpleTheme;
+    const shufflePuzzle = false; //theme is SimpleTheme;
 
     return Scaffold(
       body: AnimatedContainer(
@@ -102,7 +128,7 @@ class PuzzleView extends StatelessWidget {
                   4,
                   settingsBloc: BlocProvider.of<SettingsControlBloc>(context),
                 )..add(
-                    PuzzleInitialized(
+                    const PuzzleInitialized(
                       shufflePuzzle: shufflePuzzle,
                     ),
                   ),

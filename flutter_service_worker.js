@@ -4,9 +4,9 @@ const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
   "version.json": "edac6610d63f93aebfb1c09a76230248",
-"index.html": "737f49e0240c9aac2334e4fae82ec99b",
-"/": "737f49e0240c9aac2334e4fae82ec99b",
-"main.dart.js": "263fb4bb8cbc028f6284786211726ba2",
+"index.html": "398de0e6b344d1750b45d260a2be402d",
+"/": "398de0e6b344d1750b45d260a2be402d",
+"main.dart.js": "21b3ae22c3ec4dcea7e1c95869bca391",
 "favicon.png": "7a26ea9d4e61122fc023b84e5acdb148",
 "icons/Icon-192.png": "12d05db1c0b26d429b54e3f8c946a496",
 "icons/favicon.png": "7a26ea9d4e61122fc023b84e5acdb148",
@@ -15,7 +15,7 @@ const RESOURCES = {
 "assets/AssetManifest.json": "633c28ea8fdfe73b708ca3ea87bbe3b8",
 "assets/NOTICES": "8bb1c2a97801cc7677f875fd4a69232c",
 "assets/FontManifest.json": "a6a35a39ab693849dcde3aba2d4304a7",
-"assets/fonts/MaterialIcons-Regular.otf": "4e6447691c9509f7acdbf8a931a85ca1",
+"assets/fonts/MaterialIcons-Regular.otf": "7e7a6cccddf6d7b20012a548461d5d81",
 "assets/assets/images/simple_dash_large.png": "c3100434238b1fe0f6b8e6d074ccd80e",
 "assets/assets/images/audio_control/simple_on.png": "63e24186aec21d19e6f82f88d656a951",
 "assets/assets/images/audio_control/dashatar_on.png": "927040d878eeeb9c0700d50fac87674f",
@@ -242,18 +242,22 @@ const RESOURCES = {
 "assets/assets/fonts/GoogleSans-Italic.ttf": "b08c7421b2d5350ea3003c8f38932601",
 "assets/assets/fonts/GoogleSans-Bold.ttf": "c0370e8a74992bab73461f8348e3b369",
 "assets/assets/fonts/GoogleSans-BoldItalic.ttf": "aebc8fe5e393970fa3d468524e64b670",
-"assets/assets/fonts/GoogleSans-Regular.ttf": "51134713ade7b1f137e06ce395d39d40"
+"assets/assets/fonts/GoogleSans-Regular.ttf": "51134713ade7b1f137e06ce395d39d40",
+"canvaskit/canvaskit.js": "c2b4e5f3d7a3d82aed024e7249a78487",
+"canvaskit/profiling/canvaskit.js": "ae2949af4efc61d28a4a80fffa1db900",
+"canvaskit/profiling/canvaskit.wasm": "95e736ab31147d1b2c7b25f11d4c32cd",
+"canvaskit/canvaskit.wasm": "4b83d89d9fecbea8ca46f2f760c5a9ba"
 };
 
 // The application shell files that are downloaded before a service worker can
 // start.
 const CORE = [
-  "https://alpiepho.github.io/slide_puzzle/",
-"https://alpiepho.github.io/slide_puzzle/main.dart.js",
-"https://alpiepho.github.io/slide_puzzle/index.html",
-"https://alpiepho.github.io/slide_puzzle/assets/NOTICES",
-"https://alpiepho.github.io/slide_puzzle/assets/AssetManifest.json",
-"https://alpiepho.github.io/slide_puzzle/assets/FontManifest.json"];
+  "/",
+"main.dart.js",
+"index.html",
+"assets/NOTICES",
+"assets/AssetManifest.json",
+"assets/FontManifest.json"];
 // During install, the TEMP cache is populated with the application shell files.
 self.addEventListener("install", (event) => {
   self.skipWaiting();

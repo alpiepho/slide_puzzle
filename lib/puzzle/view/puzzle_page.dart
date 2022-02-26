@@ -76,7 +76,10 @@ class PuzzlePage extends StatelessWidget {
                 ),
               ),
               BlocProvider(
-                create: (_) => AudioControlBloc(),
+                create: (_) => AudioControlBloc(prefs!)
+                  ..add(
+                    AudioInitialized(),
+                  ),
               ),
               BlocProvider(
                 create: (_) => SettingsControlBloc(prefs!)

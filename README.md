@@ -38,7 +38,7 @@ Optionally, load as PWA to you phone.  On IOS Safari, look for middle up botton,
 - [x] local persistent storage of puzzle settings
 - [-] local persistent storage of puzzle state
 - [x] local persistent storage of puzzle theme
-- [ ] local persistent storage of puzzle audio
+- [x] local persistent storage of puzzle audio
 - [ ] review TODO items
 - [ ] review "// ingore" tags
 - [ ] review for code refactor and updated testing

@@ -9,4 +9,6 @@ abstract class AudioControlEvent extends Equatable {
   List<Object> get props => [];
 }
 
+class AudioInitialized extends AudioControlEvent {}
+
 class AudioToggled extends AudioControlEvent {}
